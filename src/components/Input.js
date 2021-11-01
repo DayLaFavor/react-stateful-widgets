@@ -45,29 +45,24 @@ export default function Input() {
     // Log out the synthetic event object 'evt' and see for yourself.
     const { value } = evt.target;
 
-    /* STEP 4 */
+    setInputValue(value)
   };
   const reset = () => {
-    <button onClick={() => setInputValue(inputValue === '')}>Reset</button>
+    setInputValue('')
   };
 
   const style = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: 'royalblue', 
+    color: inputValue.length > 10 ? 'crimson' : 'royalblue'
   };
-if (inputValue > 9) {
-  style.color = 'crimson'
-} else {
-  style.color = 'royalblue'
-}
 
   return (
     <div className='widget-input container'>
       <h2>Input</h2>
-      <div id='output' style={style}></div> {/* STEP 3 */}
+      <div id='output' style={style}>{inputValue.toUpperCase()}</div>
       <div>
-        <input id='input' type='text' onChange={changeInput} /> {/* STEP 6 */}
+        <input id='input' type='text' value={inputValue} onChange={changeInput} /> {/* STEP 6 */}
         <button id='resetInput' onClick={reset}>Reset</button>
       </div>
     </div>

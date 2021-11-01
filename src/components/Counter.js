@@ -52,24 +52,19 @@ export default function Counter() {
   const [count, setCount] = useState(0)
 
   const increment = () => {
-    <button onClick={() => setCount(count + 1)}>Add one</button>
+    setCount(count + 1)
   };
   const decrement = () => {
-    <button onClick={() => setCount(count - 1)}>Subtract one</button>
+    setCount(count - 1)
   };
   const reset = () => {
-    <button onClick={() => setCount(count === 0)}>Set Zero</button>
+    setCount(0)
   };
 
   const style = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: 'royalblue',
-  };
-  if(count % 2 == 0){
-    style.color = 'royalblue'
-  } else {
-    style.color = 'crimson'
+    color: count % 2 === 0 ? 'crimson' : 'royalblue'
   };
 
   return (
